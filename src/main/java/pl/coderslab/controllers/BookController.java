@@ -52,6 +52,14 @@ public class BookController {
     public List<Book> deleteBook(@PathVariable int id){
 
         return bookService.deleteBook(id);
+
+
+    }
+
+    @PutMapping("")
+    public Book updateBook(@RequestParam int id,@RequestParam String isbn,@RequestParam String title,@RequestParam String author,@RequestParam String publisher,@RequestParam String type ){
+
+        return bookService.updateBook(id, isbn, title, author, publisher, type);
     }
 }
 

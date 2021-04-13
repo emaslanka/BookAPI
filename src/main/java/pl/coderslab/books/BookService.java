@@ -12,5 +12,7 @@ public interface BookService {
 
     List<Book> deleteBook(int id);
 
+    Book updateBook(int id,String isbn, String title, String author, String publisher,String type);
+
 
 }

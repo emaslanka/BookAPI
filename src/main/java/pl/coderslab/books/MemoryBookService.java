@@ -64,29 +64,26 @@ public class MemoryBookService implements BookService {
         return list;
 
 
-    };
+    }
+
+    @Override
+    public Book updateBook(int id,String isbn, String title, String author, String publisher,String type) {
+
+        Book toUpdate = findBook(id);
+        toUpdate.setIsbn(isbn);
+        toUpdate.setTitle(title);
+        toUpdate.setAuthor(author);
+        toUpdate.setPublisher(publisher);
+        toUpdate.setType(type);
+
+        return toUpdate;
+    }
 
 
-    // download an object with provided id
 
 
 
-//    public Book getBook (int id){
-//        Book book;
-//
-//        for (int i = 0; i < ; i++) {
-//
-//        }
 
-    // find a book with given id and return it
 
-  // return }
-    // edit an object
-
-   // @GetMapping
-
-    //delete an object
-
-    //@DeleteMapping
 
 }
