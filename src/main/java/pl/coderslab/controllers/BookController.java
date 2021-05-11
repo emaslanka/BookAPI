@@ -41,25 +41,26 @@ public class BookController {
 
     }
 
-
     @PostMapping("")
-    public Book getAndAdd(@RequestParam String isbn, @RequestParam String title, @RequestParam String author , @RequestParam String publisher, @RequestParam String type ){
-        return bookService.addBook(isbn,title,author,publisher,type);
+    public Book addBook(@RequestBody Book book){
+        return bookService.addBook(book);
     }
+
+
 
 
     @DeleteMapping("/{id}")
     public List<Book> deleteBook(@PathVariable int id){
-
         return bookService.deleteBook(id);
-
 
     }
 
     @PutMapping("")
-    public Book updateBook(@RequestParam int id,@RequestParam String isbn,@RequestParam String title,@RequestParam String author,@RequestParam String publisher,@RequestParam String type ){
+    public Book updateBook(@RequestBody Book book){
+        System.out.println(book);
+        bookService.updateBook(book);
+        return book;
 
-        return bookService.updateBook(id, isbn, title, author, publisher, type);
     }
 }
 

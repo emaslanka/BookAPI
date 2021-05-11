@@ -6,13 +6,13 @@ public interface BookService {
 
     List<Book> getBooks();
 
-    Book findBook(int id);
+    Book findBook(long id);
 
-    Book addBook(String isbn, String title, String author, String publisher,String type);
+    Book addBook(Book book);
 
-    List<Book> deleteBook(int id);
+    List<Book> deleteBook(long id);
 
-    Book updateBook(int id,String isbn, String title, String author, String publisher,String type);
+    Book updateBook(Book book);
 
 
 }

@@ -26,14 +26,12 @@ public class MemoryBookService implements BookService {
 
     @GetMapping
     public List<Book> getBooks(){
-
       return this.list;
     };
 
     @Override
-    public Book findBook(int id){
+    public Book findBook(long id){
     Book toFind = null;
-
         for (Book b:this.list
              ) {
             if(b.getId()== id){
@@ -46,44 +44,30 @@ public class MemoryBookService implements BookService {
 
 
     @Override
-    public Book addBook(String isbn, String title, String author, String publisher,String type ) {
+    public Book addBook(Book book) {
 
-        Book b = new Book(this.nextId, isbn,title,author,publisher,type);
-        list.add(b);
+        book.setId(this.nextId);
+        list.add(book);
+
         this.nextId = this.nextId + 1;
-
-        return b;
+        return book;
     }
 
 
     @Override
-    public  List<Book> deleteBook(int id){
+    public  List<Book> deleteBook(long id){
         Book toDelete = findBook(id);
         list.remove(toDelete);
-
         return list;
-
-
     }
 
     @Override
-    public Book updateBook(int id,String isbn, String title, String author, String publisher,String type) {
+    public Book updateBook(Book book) {
 
-        Book toUpdate = findBook(id);
-        toUpdate.setIsbn(isbn);
-        toUpdate.setTitle(title);
-        toUpdate.setAuthor(author);
-        toUpdate.setPublisher(publisher);
-        toUpdate.setType(type);
-
-        return toUpdate;
+        Book toUpdate = findBook(book.getId());
+        int indexOfBook= list.indexOf(toUpdate);
+        list.set(indexOfBook,book);
+        return book;
     }
-
-
-
-
-
-
-
 
 }
